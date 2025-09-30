@@ -1,6 +1,9 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.fedcm import account
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
@@ -13,21 +16,23 @@ driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
 # open the url
-driver.get('https://www.google.com/')
+driver.get('https://www.target.com')
 
-# populate search field
-search = driver.find_element(By.NAME, 'q')
-search.clear()
-search.send_keys('dresser')
+#search:
+driver.find_element(By.XPATH,"//span[contains(.,'Account')]").click()
+driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click()
+sleep(5)
+driver.find_element(By.XPATH,"//h1[contains(.,'Sign in or create account')]")
+driver.find_element(By.ID,"login")
 
-# wait for 4 sec
-sleep(4)
 
-# click search button
-driver.find_element(By.NAME, 'btnK').click()
 
-# verify search results
-assert 'dressers'.lower() in driver.current_url.lower(), f"Expected query not in {driver.current_url.lower()}"
-print('Test Passed')
 
-driver.quit()
+
+time.sleep(20)
+
+
+
+
+
+
