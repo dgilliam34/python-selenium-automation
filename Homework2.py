@@ -18,12 +18,16 @@ driver.maximize_window()
 # open the url
 driver.get('https://www.target.com')
 
+driver.find_element(By.XPATH,"//input[@id='search']").send_keys('toilet tissue')
+sleep(5)
+
 #search:
 driver.find_element(By.XPATH,"//span[contains(.,'Account')]").click()
 driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click()
 sleep(5)
 driver.find_element(By.XPATH,"//h1[contains(.,'Sign in or create account')]")
 driver.find_element(By.ID,"login")
+
 
 
 
